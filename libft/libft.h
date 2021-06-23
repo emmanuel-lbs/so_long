@@ -6,7 +6,7 @@
 /*   By: elabasqu <elabasqu@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 16:05:28 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/06/19 13:25:19 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/06/23 18:27:46 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 void		printf_lst(t_list *lst);
 char		**ft_free_split(char **str);
 int			ft_power(int base, int power);
+void		print_error(char *error);
+char	**ft_free_double_char(char **str);
 
 #endif

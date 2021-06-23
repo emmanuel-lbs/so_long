@@ -6,7 +6,7 @@
 #    By: elabasqu <elabasqu@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 15:33:24 by elabasqu          #+#    #+#              #
-#    Updated: 2021/06/19 12:18:15 by elabasqu         ###   ########lyon.fr    #
+#    Updated: 2021/06/23 18:27:37 by elabasqu         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRCS = ft_memset.c \
 	   ft_putendl_fd.c \
 	   ft_putnbr_fd.c \
 	   ft_power.c \
+	   ft_printf_error.c \
+	   ft_free_double_char.c \
 	   get_next_line.c \
 	   get_next_line_utils.c 
 

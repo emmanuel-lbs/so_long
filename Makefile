@@ -14,7 +14,10 @@
 
 ##############################  SOURCE & OBJETS  ###############################
 
-SRCS = src/so_long.c
+SRCS = src/so_long.c \
+	   src/parsing/parsing.c \
+	   src/parsing/create_map.c \
+	   src/parsing/check_map.c 
 
 OBJS = $(SRCS:.c=.o)
 

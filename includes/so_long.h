@@ -2,6 +2,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+
+# include "structure.h"
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <stdio.h>
@@ -11,5 +13,9 @@
 # include <limits.h>
 # include <unistd.h>
 
+char	**parsing(int ac, char **av, t_struct *struc);
+char	**create_map(t_struct *struc);
+void	check_intruder(char **map, t_struct *struc);
+void	check_line(char **map);
 
 #endif
