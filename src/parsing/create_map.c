@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 18:32:02 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/06/23 18:53:13 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 13:24:34 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char *first_line(t_struct *struc)
 		print_error("Error\nmap missing\n");
 	return (line);
 }
-//tout les print error il faut free line.
 
 void	end_of_file(char *line_for_free, t_struct *struc)
 {
@@ -58,7 +57,6 @@ void	end_of_file(char *line_for_free, t_struct *struc)
 		free(line);
 	}
 }
-//tout les print error il faut ft_free_double_char de map**
 
 
 char **create_map(t_struct *struc)
@@ -74,16 +72,19 @@ char **create_map(t_struct *struc)
 	{
 		ret_gnl = get_next_line(struc->fd, &line);
 		if (ret_gnl == -1)
+		{
+			free(big_line);
 			print_error("Error\nget_next_line crash\n");
+		}
 		if (!line[0])
 		{
 			free(line);
 			break;
 		}
 		big_line = ft_strjoin(ft_strjoin(big_line, line), "\n");
+		free(line);
 		if (!big_line)
 			print_error("Error\nstrjoin crash\n");
-		free(line);
 	}
 	end_of_file(big_line, struc);
 	map = ft_split(big_line, '\n');
@@ -92,5 +93,3 @@ char **create_map(t_struct *struc)
 	free(big_line);
 	return (map);
 }
-//premier et dernier error ft_free_double_char map**
-//deuxieme error ft_free_double_char map** et free line

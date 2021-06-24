@@ -13,15 +13,15 @@ e_valid_caract	check_valid_caract(char c)
 	return (not_valid);
 }
 
-t_point check_point(int x, int y, t_point point)
+void	check_point(int x, int y, t_struct *struc)
 {
-	t_point ok_point;
-
-	if (point.x != -1)
+	if (struc->start_point.x != -1)
+	{
+		ft_free_struc(struc);
 		print_error("Error\ndont put two point ");
-	ok_point.x = y + 0.5;
-	ok_point.y = x + 0.5;
-	return (ok_point);
+	}
+	struc->start_point.x = y + 0.5;
+	struc->start_point.y = x + 0.5;
 }
 
 int		nb_of_c_in_map(char **map, char c)
@@ -48,10 +48,16 @@ void	init_point(char **map, t_struct *struc)
 	struc->nb_of_colect =  nb_of_c_in_map(map, 'C');
 	struc->colect_point = malloc(sizeof(t_point) * struc->nb_of_colect);
 	if (!struc->colect_point)
+	{
+		ft_free_struc(struc);
 		print_error("Error\nmalloc\n");
+	}
 	struc->exit_point = malloc(sizeof(t_point) * struc->nb_of_exit);
 	if (!struc->exit_point)
+	{
+		ft_free_struc(struc);
 		print_error("Error\nmalloc\n");
+	}
 	struc->start_point.x = -1;
 	struc->colect_point[0].x = -1;
 	struc->exit_point[0].x = -1;
@@ -60,11 +66,31 @@ void	init_point(char **map, t_struct *struc)
 void check_exist_point(t_struct *struc)
 {
 	if (struc->start_point.x == -1)
+	{
+		ft_free_struc(struc);
 		print_error("Error\nyou have to put point start");
+	}
 	if (struc->colect_point[0].x == -1)
+	{
+		ft_free_struc(struc);
 		print_error("Error\nyou have to put colect point");
+	}
 	if (struc->exit_point[0].x == -1)
+	{
+		ft_free_struc(struc);
 		print_error("Error\nyou have to put exit point");
+	}
+}
+
+void	ft_free_struc(t_struct *struc)
+{
+	if (struc->map)
+		ft_free_double_char(struc->map);
+	if (struc->exit_point)
+		free(struc->exit_point);
+	if (struc->colect_point)
+		free(struc->colect_point);
+
 }
 
 void	check_intruder(char **map, t_struct *struc)
@@ -87,10 +113,11 @@ void	check_intruder(char **map, t_struct *struc)
 			if (!(check_valid_caract(map[x][y])))
 			{
 				printf("Error\ncaractere %c invalid in the map", map[x][y]);
+				ft_free_struc(struc);
 				exit(-1);
 			}
 			if (check_valid_caract(map[x][y]) == P)
-				struc->start_point = check_point(y, x, struc->start_point);
+				check_point(y, x, struc);
 			if (check_valid_caract(map[x][y]) == E)
 				struc->exit_point[++nb_exit] = (t_point){y, x};
 			if (check_valid_caract(map[x][y]) == C)
@@ -110,5 +137,8 @@ void	check_line(char **map)
 	i = -1;
 	while (map[++i])
 		if (ft_strlen(map[i]) != len_first_line)
+		{
+			ft_free_double_char(map);
 			print_error("Error\nthe map is not rectangular\n");
+		}
 }

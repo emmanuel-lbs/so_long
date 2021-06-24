@@ -26,6 +26,7 @@ typedef struct	struc {
 	t_point *colect_point;
 	t_point *exit_point;
 
+	char **map;
 	int	nb_of_exit;
 	int nb_of_colect;
 	int fd;

@@ -13,9 +13,10 @@
 # include <limits.h>
 # include <unistd.h>
 
-char	**parsing(int ac, char **av, t_struct *struc);
+void	parsing(int ac, char **av, t_struct *struc);
 char	**create_map(t_struct *struc);
 void	check_intruder(char **map, t_struct *struc);
 void	check_line(char **map);
+void	ft_free_struc(t_struct *struc);
 
 #endif
