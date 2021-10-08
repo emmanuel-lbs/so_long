@@ -1,5 +1,6 @@
 
 #include "so_long.h"
+#include "../mlx/mlx.h"
 
 typedef enum valid_caract {
 	P = 1,
@@ -14,22 +15,79 @@ typedef enum order {
 	check,
 }			e_order;
 
+typedef struct s_point_int
+{
+	int	x;
+	int	y;
+}		t_point_int;
+
 typedef struct s_point
 {
-		float	x;
-		float	y;
+	float	x;
+	float	y;
 }		t_point;
+
+typedef	struct s_keylst
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+}			t_keylst;
+
+//~~~~~~~~~~TEXTURE~~~~~~~~~~~~//
+
+typedef struct s_texture {
+	void		*ptr;
+	int			*addr;
+	int			bpp;
+	int			len;
+	int			endian;
+}	t_texture;
+
+//~~~~~~~~MLX STRUCT~~~~~~~~~~~//
+
+typedef struct  s_vars {
+	void        *mlx;
+	void        *win;
+}               t_vars;
+
+typedef struct  s_data {
+	void        *img;
+	char        *addr;
+	int         bits_per_pixel;
+	int         line_length;
+	int         endian;
+}               t_data;
+
+//~~~~~~~~BASE STRUCT~~~~~~~~~~~//
 
 typedef struct	struc {
 
-	t_point start_point;
+	t_point_int start_point;
 	t_point *colect_point;
-	t_point *exit_point;
+	t_point exit_point;
+
+	t_keylst keylst;
 
 	char **map;
+	int height;
+	int width;
+	int R1;
+	int R2;
+	t_point_int size_of_block;
+
+	int nb_of_move;
 	int	nb_of_exit;
 	int nb_of_colect;
+	int nb_collected;
 	int fd;
+	t_texture textu;
 
+	void *window;
+	void *win;
+	t_data		data;
+	t_data		data_swap;;
+	t_vars		vars;
 
 }				t_struct;

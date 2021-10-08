@@ -6,13 +6,13 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 18:32:02 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/06/24 13:24:34 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:29:43 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-char *first_line(t_struct *struc)
+char	*first_line(t_struct *struc)
 {
 	char	*line;
 	int		ret_gnl;
@@ -28,7 +28,7 @@ char *first_line(t_struct *struc)
 			line = ft_strjoin(line, "\n");
 			if (!line)
 				print_error("Error\nstrjoin crash\n");
-			break;
+			break ;
 		}
 		free(line);
 	}
@@ -39,8 +39,8 @@ char *first_line(t_struct *struc)
 
 void	end_of_file(char *line_for_free, t_struct *struc)
 {
-	char *line;
-	int ret_gnl;
+	char	*line;
+	int		ret_gnl;
 
 	ret_gnl = 1;
 	while (ret_gnl > 0)
@@ -58,8 +58,7 @@ void	end_of_file(char *line_for_free, t_struct *struc)
 	}
 }
 
-
-char **create_map(t_struct *struc)
+char	**create_map(t_struct *struc)
 {
 	char	**map;
 	char	*line;
@@ -79,7 +78,7 @@ char **create_map(t_struct *struc)
 		if (!line[0])
 		{
 			free(line);
-			break;
+			break ;
 		}
 		big_line = ft_strjoin(ft_strjoin(big_line, line), "\n");
 		free(line);

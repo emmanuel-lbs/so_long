@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 17:32:32 by elabasqu          #+#    #+#             */
+/*   Updated: 2021/10/05 18:15:31 by elabasqu         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 int	check_arg(int ac, char **av)
@@ -29,7 +41,7 @@ int	check_arg(int ac, char **av)
 
 void	check_valid_map(t_struct *struc)
 {
-	int i;
+	int	i;
 	int	len_line;
 
 	len_line = ft_strlen(struc->map[0]) - 1;
@@ -62,29 +74,23 @@ void	check_valid_map(t_struct *struc)
 	len_line = i - 1;
 	i = -1;
 	while (struc->map[len_line][++i])
+	{
 		if (struc->map[len_line][i] != '1')
 		{
 			printf("Error\nlast line in map is invalid");
 			ft_free_struc(struc);
 			exit(-1);
 		}
+	}
 }
 
 void	parsing(int ac, char **av, t_struct *struc)
 {
-
 	struc->fd = check_arg(ac, av);
 	struc->map = create_map(struc);
 	check_intruder(struc->map, struc);
 	check_line(struc->map);
-	int i = -1;
-	while (struc->map[++i])
-		printf("%s\n",struc->map[i]);
 	check_valid_map(struc);
-
-	printf("P = %f,%f\n",struc->start_point.x, struc->start_point.y);
-
-	printf("C = %d\n",struc->nb_of_colect);
-	printf("P = %d\n",struc->nb_of_exit);
-
+	struc->nb_collected = 0;
+	struc->nb_of_move = 1;
 }

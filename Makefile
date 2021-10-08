@@ -17,7 +17,12 @@
 SRCS = src/so_long.c \
 	   src/parsing/parsing.c \
 	   src/parsing/create_map.c \
-	   src/parsing/check_map.c 
+	   src/parsing/check_map.c \
+	   src/parsing/parsing_utils.c \
+	   src/key.c \
+	   src/display.c \
+	   src/move.c \
+	   src/first.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -29,7 +34,7 @@ INCLUDE = includes/so_long.h includes/structure.h
 
 RM = rm -f
 
-GCCF = gcc -Wall -Wextra #-Werror
+GCCF = gcc -Wall -Wextra -g #-Werror
 
 ##################################  RULES  #####################################
 
@@ -37,16 +42,16 @@ all :	libf $(NAME)
 
 
 $(NAME):	$(INCLUDE) $(OBJS)
-			${MAKE} -C mlx
-			ln -sf mlx/libmlx.dylib
-			$(GCCF) $(OBJS) libft.a -o $(NAME)
+	${MAKE} -C mlx
+	ln -sf mlx/libmlx.dylib
+	$(GCCF) $(OBJS) libmlx.dylib libft.a -o $(NAME)
 
 %.o: %.c	$(INCLUDE) 
-	${GCCF} -c $< -o $@ -g 
+	${GCCF} -c $< -o $@
 
 libf:
-			$(MAKE) -C libft
-			ln -sf libft/libft.a
+	$(MAKE) -C libft
+	ln -sf libft/libft.a
 
 ############################  CLEAN & RE & phony  ##############################
 
