@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:51:36 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/05 18:19:07 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/15 15:30:35 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	mlx_begin(t_struct *struc)
 	if (struc->nb_collected == struc->nb_of_colect && struc->map[struc->start_point.x][struc->start_point.y] == 'E')
 	{
 		struc->textu.ptr = mlx_xpm_file_to_image(struc->window, "./text/ecran-de-fin-.xpm", &a, &b);
-		struc->textu.addr = (int *)mlx_get_data_addr(struc->textu.ptr, &struc->textu.bpp, &struc->textu.len, &struc->textu.endian);
+		struc->textu.addr = (int *)mlx_get_data_addr(struc->textu.ptr, &struc->textu.b, &struc->textu.a, &struc->textu.endian);
 		mlx_put_image_to_window(struc->window, struc->win, struc->textu.ptr, 150, 150);
 		return (0);
 	}

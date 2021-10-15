@@ -40,9 +40,11 @@ typedef	struct s_keylst
 typedef struct s_texture {
 	void		*ptr;
 	int			*addr;
-	int			bpp;
-	int			len;
+	int			width;
+	int			height;
 	int			endian;
+	int			a;
+	int			b;
 }	t_texture;
 
 //~~~~~~~~MLX STRUCT~~~~~~~~~~~//
