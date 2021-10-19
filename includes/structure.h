@@ -43,6 +43,7 @@ typedef struct s_texture {
 	int			width;
 	int			height;
 	int			endian;
+	int			line_length;
 	int			a;
 	int			b;
 }	t_texture;
@@ -56,7 +57,7 @@ typedef struct  s_vars {
 
 typedef struct  s_data {
 	void        *img;
-	char        *addr;
+	int        *addr;
 	int         bits_per_pixel;
 	int         line_length;
 	int         endian;
@@ -71,6 +72,11 @@ typedef struct	struc {
 	t_point exit_point;
 
 	t_keylst keylst;
+
+
+
+	int		square_height;
+	int		square_width;
 
 	char **map;
 	int height;
