@@ -1,0 +1,8 @@
+.DS_Store
+**/*.o
+**/*.sw*
+*.o
+*.sw*
+*.dylib
+*.a
+so_long

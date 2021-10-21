@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:25:17 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/05 18:25:19 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/20 19:08:23 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,31 @@ void	all(t_struct *s, int x, int y)
 	}
 }
 
-void	move(t_struct *s)
+int	move(t_struct *s)
 {
 	if (s->keylst.w)
 	{
 		all(s, -1, 0);
 		s->keylst.w = 0;
+		return (1);
 	}
 	else if (s->keylst.s)
 	{
 		all(s, 1, 0);
 		s->keylst.s = 0;
+		return (1);
 	}
 	else if (s->keylst.a)
 	{
 		all(s, 0, -1);
 		s->keylst.a = 0;
+		return (1);
 	}
 	else if (s->keylst.d)
 	{
 		all(s, 0, 1);
 		s->keylst.d = 0;
+		return (1);
 	}
+	return (0);
 }

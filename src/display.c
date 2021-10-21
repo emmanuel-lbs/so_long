@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:54:57 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/19 16:40:08 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/20 19:18:51 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,20 @@ void	print_text(t_struct *s, char c)
 		s->textu.ptr = mlx_xpm_file_to_image(s->window, "./text/P.xpm", &s->textu.width, &s->textu.height);
 }
 
-void	draw_texture(t_struct *s, int x, int y, t_texture texture)
+void	put_img(t_struct *s, char c, int x, int y)
 {
-	int		tx;
-	int		ty;
-	float	ratio_y;
-	float	ratio_x;
+	if (c == '0')
+			mlx_put_image_to_window(s->window, s->win, s->data[0].img, x, y);
+	else if (c == '1')
+			mlx_put_image_to_window(s->window, s->win, s->data[1].img, x, y);
+	else if (c == 'E')
+			mlx_put_image_to_window(s->window, s->win, s->data[img_E].img, x, y);
+	else if (c == 'C')
+			mlx_put_image_to_window(s->window, s->win, s->data[img_C].img, x, y);
+	else if (c == 'P')
+			mlx_put_image_to_window(s->window, s->win, s->data[img_P].img, x, y);
 
-	tx = 0;
-	ratio_x = texture.height / (float)s->size_of_block.x;
-	ratio_y = texture.width  / (float)s->size_of_block.y;
-//	printf(" texture height = %d\n",texture.height);
-//	printf("size block y %d\n",s->size_of_block.y);
-//	printf("texture width %d\n",texture.width);
-//	printf(" size block x %d\n",s->size_of_block.x);
-
-	while (tx < s->size_of_block.x)
-	{
-		ty = 0;
-		while (ty < s->size_of_block.y)
-		{
-			s->data.addr[(x + ty) * (s->data.line_length / 4)  + (y + tx )] = texture.addr[(int)((int)(tx * ratio_x) + (int)(ty * ratio_y ) * texture.line_length / 4 )];
-			ty++;
-		}
-		tx++;
-	}
 }
-
 
 void	display(t_struct *s)
 {
@@ -75,17 +62,9 @@ void	display(t_struct *s)
 		i2 = 0;
 		while (y < s->height * s->size_of_block.y)
 		{
-			//			printf("x == %d      y == %d\n",x, y);
-			print_text(s, s->map[i2][i]);
-		//	s->textu.ptr = mlx_xpm_file_to_image(s->window, "./text/P.xpm", &s->textu.width, &s->textu.height);
-			s->textu.addr = (int *)mlx_get_data_addr(s->textu.ptr, &s->textu.a, &s->textu.line_length, &s->textu.endian);
-			//			printf("%d\n",s->textu.line_length);
-			draw_texture(s, y, x, s->textu);
-			mlx_put_image_to_window(s->window, s->win, s->data.img, 0, 0);
-			mlx_put_image_to_window(s->window, s->win, s->textu.ptr, 700, 150);
+			put_img(s, s->map[i2][i], x, y);
 			y += s->size_of_block.y;
 			i2++;
-//			printf("i et i2 %d    %d\n",i, i2);
 		}
 		x += s->size_of_block.x;
 		i++;

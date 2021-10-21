@@ -2,6 +2,13 @@
 #include "so_long.h"
 #include "../mlx/mlx.h"
 
+typedef enum what_img {
+	img_C = 2,
+	img_E = 3,
+	img_P = 4,
+	img_FIN = 5,
+}			e_what_img;
+
 typedef enum valid_caract {
 	P = 1,
 	E = 2,
@@ -94,7 +101,7 @@ typedef struct	struc {
 
 	void *window;
 	void *win;
-	t_data		data;
+	t_data		data[6];
 	t_data		data_swap;;
 	t_vars		vars;
 
