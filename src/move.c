@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:25:17 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/20 19:08:23 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/22 17:45:25 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	all(t_struct *s, int x, int y)
 		s->map[s->start_point.x + x][s->start_point.y + y] = 'P';
 		s->start_point.x += x;
 		s->start_point.y += y;
-		printf("%d\n", s->nb_of_move++);
+		s->nb_of_move++;
 	}
 	else if (verif_move(s, x, y) == 2)
 	{

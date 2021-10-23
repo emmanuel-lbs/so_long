@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:32:29 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/05 17:32:36 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/23 18:12:49 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ void	init_point(char **map, t_struct *struc)
 {
 	struc->nb_of_colect = nb_of_c_in_map(map, 'C');
 	struc->colect_point = malloc(sizeof(t_point) * struc->nb_of_colect);
-	if (nb_of_c_in_map(map, 'E') != 1)
-	{
-		print_error("Error\nyou have 2 exit point");
-		ft_free_struc(struc);
-	}
 	if (!struc->colect_point)
 	{
 		ft_free_struc(struc);
@@ -47,6 +42,7 @@ void	init_point(char **map, t_struct *struc)
 	struc->start_point.x = -1;
 	struc->colect_point[0].x = -1;
 	struc->exit_point.x = -1;
+	struc->nb_of_colect = 0;
 }
 
 void	check_exist_point(t_struct *struc)
@@ -72,11 +68,8 @@ void	check_intruder(char **map, t_struct *struc)
 {
 	int	x;
 	int	y;
-	int	nb_colect;
 
-	nb_colect = -1;
 	x = -1;
-	init_point(map, struc);
 	while (map[++x])
 	{
 		y = -1;
@@ -93,12 +86,11 @@ void	check_intruder(char **map, t_struct *struc)
 			if (check_valid_caract(map[x][y]) == E)
 				struc->exit_point = (t_point){y, x};
 			if (check_valid_caract(map[x][y]) == C)
-				struc->colect_point[++nb_colect] = (t_point){y, x};
+				struc->colect_point[struc->nb_of_colect++] = (t_point){y, x};
 		}
 	}
 	struc->height = x;
 	struc->width = y;
-	check_exist_point(struc);
 }
 
 void	check_line(char **map)

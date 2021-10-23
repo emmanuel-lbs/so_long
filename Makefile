@@ -23,7 +23,7 @@ SRCS = src/so_long.c \
 	   src/display.c \
 	   src/move.c \
 	   src/first.c \
-	   src/resize.c \
+	   src/images.c \
 
 OBJS = $(SRCS:.c=.o)
 

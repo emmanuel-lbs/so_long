@@ -6,13 +6,13 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:32:28 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/05 17:32:36 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/23 18:51:47 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-e_valid_caract	check_valid_caract(char c)
+t_valid_caract	check_valid_caract(char c)
 {
 	if (c == '1' || c == '0')
 		return (nu);

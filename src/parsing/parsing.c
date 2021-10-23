@@ -6,13 +6,13 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:32:32 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/05 18:15:31 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/23 18:37:36 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	check_arg(int ac, char **av)
+static int	check_arg(int ac, char **av)
 {
 	int	i;
 
@@ -39,22 +39,12 @@ int	check_arg(int ac, char **av)
 	return (i);
 }
 
-void	check_valid_map(t_struct *struc)
+static int	check_valid_mid_line(t_struct *struc)
 {
 	int	i;
 	int	len_line;
 
 	len_line = ft_strlen(struc->map[0]) - 1;
-	i = -1;
-	while (struc->map[0][++i])
-	{
-		if (struc->map[0][i] != '1')
-		{
-			printf("Error\nfirst line in map is invalid");
-			ft_free_struc(struc);
-			exit(-1);
-		}
-	}
 	i = 0;
 	while (struc->map[++i])
 	{
@@ -71,7 +61,26 @@ void	check_valid_map(t_struct *struc)
 			exit(-1);
 		}
 	}
-	len_line = i - 1;
+	return (i - 1);
+}
+
+static void	check_valid_map(t_struct *struc)
+{
+	int	i;
+	int	len_line;
+
+	len_line = ft_strlen(struc->map[0]) - 1;
+	i = -1;
+	while (struc->map[0][++i])
+	{
+		if (struc->map[0][i] != '1')
+		{
+			printf("Error\nfirst line in map is invalid");
+			ft_free_struc(struc);
+			exit(-1);
+		}
+	}
+	len_line = check_valid_mid_line(struc);
 	i = -1;
 	while (struc->map[len_line][++i])
 	{
@@ -86,9 +95,14 @@ void	check_valid_map(t_struct *struc)
 
 void	parsing(int ac, char **av, t_struct *struc)
 {
+	char	*line_map;
+
 	struc->fd = check_arg(ac, av);
-	struc->map = create_map(struc);
+	line_map = create_line_map(struc);
+	struc->map = create_tab_map(line_map, struc);
+	init_point(struc->map, struc);
 	check_intruder(struc->map, struc);
+	check_exist_point(struc);
 	check_line(struc->map);
 	check_valid_map(struc);
 	struc->nb_collected = 0;

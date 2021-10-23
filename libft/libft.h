@@ -6,7 +6,7 @@
 /*   By: elabasqu <elabasqu@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 16:05:28 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/06/23 18:27:46 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/23 19:05:09 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_list
 }		t_list;
 
 int			get_next_line(int fd, char **line);
-int			ft_isline(const char *s, int	i);
+int			ft_isline(const char *s, int i);
 char		*ft_gnl_join(char const *prefixe, char const *suffixe);
 char		*ft_gnl_cpy(char *dest, const char *src, size_t size);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
@@ -81,6 +81,6 @@ void		printf_lst(t_list *lst);
 char		**ft_free_split(char **str);
 int			ft_power(int base, int power);
 void		print_error(char *error);
-char	**ft_free_double_char(char **str);
+char		**ft_free_double_char(char **str);
 
 #endif

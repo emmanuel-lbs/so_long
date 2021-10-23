@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 18:32:02 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/05 17:29:43 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/23 18:23:57 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ void	end_of_file(char *line_for_free, t_struct *struc)
 	}
 }
 
-char	**create_map(t_struct *struc)
+char	*create_line_map(t_struct *struc)
 {
-	char	**map;
 	char	*line;
 	char	*big_line;
 	int		ret_gnl;
@@ -85,10 +84,17 @@ char	**create_map(t_struct *struc)
 		if (!big_line)
 			print_error("Error\nstrjoin crash\n");
 	}
-	end_of_file(big_line, struc);
-	map = ft_split(big_line, '\n');
+	return (big_line);
+}
+
+char	**create_tab_map(char *line_map, t_struct *struc)
+{
+	char	**map;
+
+	end_of_file(line_map, struc);
+	map = ft_split(line_map, '\n');
 	if (!map)
 		print_error("Error\nsplit error\n");
-	free(big_line);
+	free(line_map);
 	return (map);
 }

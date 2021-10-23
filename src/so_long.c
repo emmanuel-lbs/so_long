@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:33:29 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/20 19:19:21 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/23 19:00:00 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	check_reso(t_struct *s)
 		s->size_of_block.y = 1300 / s->height;
 		s->size_of_block.x = s->size_of_block.y ;
 	}
-	s->R1 = s->size_of_block.x * s->width;
-	s->R2 = s->size_of_block.y * s->height;
+	s->r1 = s->size_of_block.x * s->width;
+	s->r2 = s->size_of_block.y * s->height;
 }
 
 void	printeur(t_struct *s)
@@ -39,26 +39,9 @@ void	printeur(t_struct *s)
 	printf("C = %d\n", s->nb_of_colect);
 	printf("E = %d\n", s->nb_of_exit);
 	printf("height = %d width = %d \n", s->height, s->width);
-	printf("R2 = %d R1 = %d \n", s->R2, s->R1);
+	printf("r2 = %d r1 = %d \n", s->r2, s->r1);
 	printf("size->y == %d\n", s->size_of_block.y);
 	printf("size->x == %d\n", s->size_of_block.x);
-}
-
-void	create_img(t_struct *s)
-{
-	s->data[0].img = mlx_new_image(s->window, s->R1, s->R2);
-	s->data[0].addr = (int *)mlx_get_data_addr(s->data[0].img, &s->data[0].bits_per_pixel, &s->data[0].line_length, &s->data[0].endian);
-	s->data[1].img = mlx_new_image(s->window, s->R1, s->R2);
-	s->data[1].addr = (int *)mlx_get_data_addr(s->data[1].img, &s->data[1].bits_per_pixel, &s->data[1].line_length, &s->data[1].endian);
-	s->data[img_E].img = mlx_new_image(s->window, s->R1, s->R2);
-	s->data[img_E].addr = (int *)mlx_get_data_addr(s->data[img_E].img, &s->data[img_E].bits_per_pixel, &s->data[img_E].line_length, &s->data[img_E].endian);
-	s->data[img_C].img = mlx_new_image(s->window, s->R1, s->R2);
-	s->data[img_C].addr = (int *)mlx_get_data_addr(s->data[img_C].img, &s->data[img_C].bits_per_pixel, &s->data[img_C].line_length, &s->data[img_C].endian);
-	s->data[img_P].img = mlx_new_image(s->window, s->R1, s->R2);
-	s->data[img_P].addr = (int *)mlx_get_data_addr(s->data[img_P].img, &s->data[img_P].bits_per_pixel, &s->data[img_P].line_length, &s->data[img_P].endian);
-	s->data[img_FIN].img = mlx_new_image(s->window, s->R1, s->R2);
-	s->data[img_FIN].addr = (int *)mlx_get_data_addr(s->data[img_FIN].img, &s->data[img_FIN].bits_per_pixel, &s->data[img_FIN].line_length, &s->data[img_FIN].endian);
-
 }
 
 int	main(int ac, char **av)
@@ -67,11 +50,9 @@ int	main(int ac, char **av)
 
 	parsing(ac, av, &s);
 	check_reso(&s);
-
-	printeur(&s);
-
+	//printeur(&s);
 	s.window = mlx_init();
-	s.win = mlx_new_window(s.window, s.R1, s.R2, "MANU_SO_LONG");
+	s.win = mlx_new_window(s.window, s.r1, s.r2, "MANU_SO_LONG");
 	create_img(&s);
 	rezize_img(&s);
 	display(&s);
