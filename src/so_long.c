@@ -6,13 +6,13 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:33:29 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/23 19:00:00 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/25 13:47:22 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	check_reso(t_struct *s)
+static void	check_reso(t_struct *s)
 {
 	if (s->width >= s->height)
 	{
@@ -50,7 +50,6 @@ int	main(int ac, char **av)
 
 	parsing(ac, av, &s);
 	check_reso(&s);
-	//printeur(&s);
 	s.window = mlx_init();
 	s.win = mlx_new_window(s.window, s.r1, s.r2, "MANU_SO_LONG");
 	create_img(&s);

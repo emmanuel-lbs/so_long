@@ -35,7 +35,7 @@ INCLUDE = includes/so_long.h includes/structure.h
 
 RM = rm -f
 
-GCCF = gcc -Wall -Wextra -g #-Werror
+GCCF = gcc -Wall -Wextra -Werror
 
 ##################################  RULES  #####################################
 

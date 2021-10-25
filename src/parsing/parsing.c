@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:32:32 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/23 18:37:36 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/24 15:33:16 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	check_arg(int ac, char **av)
 		i = -1;
 	if (i == -1)
 		print_error("Error\ninvalid .ber fil\n");
-	i = open(av[1], O_RDONLY);
+	i = open(av[1], O_RDWR);
 	if (i == -1)
 		print_error("Error\nthe map does not exist\n");
 	return (i);
@@ -106,5 +106,5 @@ void	parsing(int ac, char **av, t_struct *struc)
 	check_line(struc->map);
 	check_valid_map(struc);
 	struc->nb_collected = 0;
-	struc->nb_of_move = 1;
+	struc->nb_of_move = 0;
 }

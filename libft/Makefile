@@ -6,7 +6,7 @@
 #    By: elabasqu <elabasqu@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 15:33:24 by elabasqu          #+#    #+#              #
-#    Updated: 2021/06/23 18:27:37 by elabasqu         ###   ########lyon.fr    #
+#    Updated: 2021/10/24 16:44:45 by elabasqu         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,15 +66,14 @@ $(NAME):	${OBJS} ${LIB}
 
 
 %.o: %.c	${LIB} 
-	@${CC} ${CFLAGS} -c $< -o $@ -g
+	${CC} ${CFLAGS} -c $< -o $@
 
 
 clean:
-	@echo "${ColorRed} perfect clean"
-	@${RM} ${OBJS} ${OBJSBONUS}
+	${RM} ${OBJS}
 
 fclean:		clean
-	@${RM} ${NAME}
+	${RM} ${NAME}
 
 re:			fclean all
 

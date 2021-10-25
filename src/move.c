@@ -6,13 +6,13 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:25:17 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/22 17:45:25 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/24 16:30:48 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	verif_move(t_struct *s, int x, int y)
+static int	verif_move(t_struct *s, int x, int y)
 {
 	if (s->map[s->start_point.x + x][s->start_point.y + y] != '1' \
 			&& s->map[s->start_point.x + x][s->start_point.y + y] != 'E')
@@ -23,7 +23,7 @@ int	verif_move(t_struct *s, int x, int y)
 	return (0);
 }
 
-void	all(t_struct *s, int x, int y)
+static void	all(t_struct *s, int x, int y)
 {
 	int	a;
 	int	b;

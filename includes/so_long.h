@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 18:31:37 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/23 18:52:04 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/24 16:28:35 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void			rezize_img(t_struct *s);
 void			put_img(t_struct *s, char c, int x, int y);
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~ALGO~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 int				mlx_begin(t_struct *struc);
+void			create_img(t_struct *s);
 void			display(t_struct *struc);
 int				move(t_struct *struc);
 #endif

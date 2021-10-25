@@ -6,7 +6,7 @@
 /*   By: elabasqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:07:48 by elabasqu          #+#    #+#             */
-/*   Updated: 2021/10/23 19:00:00 by elabasqu         ###   ########lyon.fr   */
+/*   Updated: 2021/10/25 13:58:49 by elabasqu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_texture(t_struct *s, t_texture t, int img, t_point_int new_size)
 	}
 }
 
-void	rezize_img_part_two(t_struct *s)
+static void	rezize_img_part_two(t_struct *s)
 {
 	s->textu.ptr = mlx_xpm_file_to_image(s->window, "./text/E.xpm", \
 			&s->textu.width, &s->textu.height);
@@ -48,7 +48,7 @@ void	rezize_img_part_two(t_struct *s)
 	s->textu.addr = (int *)mlx_get_data_addr(s->textu.ptr, &s->textu.a, \
 			&s->textu.lenline, &s->textu.en);
 	draw_texture(s, s->textu, img_P, s->size_of_block);
-	s->textu.ptr = mlx_xpm_file_to_image(s->window, "./text/final2.xpm", \
+	s->textu.ptr = mlx_xpm_file_to_image(s->window, "./text/FINAL.xpm", \
 			&s->textu.width, &s->textu.height);
 	s->textu.addr = (int *)mlx_get_data_addr(s->textu.ptr, &s->textu.a, \
 			&s->textu.lenline, &s->textu.en);
